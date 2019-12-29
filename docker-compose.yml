@@ -10,6 +10,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    environment:
+      CLIENT_MAX_BODY_SIZE: 10G
     volumes:
       - ./app:/var/www
       - ./nginx/conf.d/:/etc/nginx/conf.d/
@@ -32,6 +34,7 @@ services:
     volumes:
       - ./app:/var/www
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./php/log:/var/log/php
     networks:
       - app-network
 
